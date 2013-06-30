@@ -1,7 +1,7 @@
 class rockyj::nginx {
 
   package { "nginx": 
-    ensure => present 
+    ensure => latest 
   }
 
   service { "nginx": 
