@@ -1,11 +1,17 @@
 class rockyj::nginx {
-
-  package { "nginx": 
+  
+  package { "python-software-properties": 
     ensure => latest 
   }
 
+  package { "nginx": 
+    ensure => latest,
+    require => Package["python-software-properties"]
+  }
+
   service { "nginx": 
-    ensure => running 
+    ensure => running,
+    require => Package["nginx"]
   }
 
   file { "logfile1":
