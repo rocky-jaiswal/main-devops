@@ -28,7 +28,8 @@ class torquebox (
   }
 
   group { 'torquebox':
-    ensure => 'present'
+    ensure => 'present',
+    before => Exec['install_torquebox']
   }
 
   user { 'torquebox':
