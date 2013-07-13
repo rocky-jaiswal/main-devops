@@ -23,7 +23,7 @@ class torquebox (
     ensure => true
   }
 
-  file { ['/root/src', '/opt/torquebox']:
+  file { ['/opt/torquebox']:
     ensure => 'directory'
   }
 
@@ -39,8 +39,8 @@ class torquebox (
   }
 
   exec { 'install_torquebox':
-    cwd       => '/root/src',
-    command   => "/usr/bin/wget ${torquebox_source} /root/src &&
+    cwd       => '/home/rockyj',
+    command   => "/usr/bin/wget ${torquebox_source} /home/rockyj &&
                   /usr/bin/unzip ${torquebox_package} &&
                   /bin/mv torquebox-${version} /opt/torquebox/${version} &&
                   /bin/ln -s /opt/torquebox/${version} /opt/torquebox/current &&
@@ -48,7 +48,7 @@ class torquebox (
     creates   => '/opt/torquebox/current/jboss/bin/standalone.sh',
     logoutput => 'on_failure',
     timeout   => 0,
-    require   => [Package['unzip'], File['/root/src','/opt/torquebox'], User['torquebox']]
+    require   => [Package['unzip'], File['/opt/torquebox'], User['torquebox']]
   }
 
   file { '/etc/profile.d/torquebox_vars.sh':
