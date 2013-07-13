@@ -41,9 +41,10 @@ class torquebox (
 
   exec { 'install_torquebox':
     cwd       => '/home/rockyj',
-    command   => "/usr/bin/wget ${torquebox_source} /home/rockyj &&
-                  /usr/bin/unzip ${torquebox_package} &&
-                  /bin/mv torquebox-${version} /opt/torquebox/${version}",
+    command   => "/usr/bin/unzip ${torquebox_package} &&
+                  /bin/mv torquebox-${version} /opt/torquebox/${version} &&
+                  /bin/ln -s /opt/torquebox/${version} /opt/torquebox/current &&
+                  /bin/chown -R torquebox:torquebox /opt/torquebox",
     creates   => '/opt/torquebox/current/jboss/bin/standalone.sh',
     logoutput => 'on_failure',
     timeout   => 0,
