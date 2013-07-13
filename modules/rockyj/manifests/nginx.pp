@@ -1,5 +1,12 @@
 class rockyj::nginx {
   
+  include stdlib
+  include apt
+
+  apt::ppa { "ppa:nginx/stable": 
+    before  => Package["nginx"],
+  }
+
   package { "python-software-properties": 
     ensure => latest 
   }

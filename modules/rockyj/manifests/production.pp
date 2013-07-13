@@ -1,6 +1,8 @@
 class rockyj::production {
 
   include rockyj::nginx
+  include rockyj::psql
+  include rockyj::tbox
 
   Exec {
     path => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
@@ -23,7 +25,7 @@ class rockyj::production {
     require => User["deploy"],
   }
 
-  file { "rockyjin":
+  file { "my_blogs":
     path    => "/home/deploy/my_blogs",
     ensure  =>  directory,
     owner   => "deploy",
