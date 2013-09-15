@@ -7,7 +7,7 @@ class rockyj::tbox {
 
   package { "unzip": 
     ensure => latest,
-    before => before  => Package["openjdk-7-jdk"],
+    before  => Package["openjdk-7-jdk"],
   }
 
   class { 'torquebox':
