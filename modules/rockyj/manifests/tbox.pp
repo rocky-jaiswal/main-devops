@@ -5,6 +5,11 @@ class rockyj::tbox {
     before => Exec['install_torquebox']
   }
 
+  package { "unzip": 
+    ensure => latest,
+    before => before  => Package["openjdk-7-jdk"],
+  }
+
   class { 'torquebox':
     version         => '3.0.0',
     add_to_path     => true,

@@ -25,8 +25,8 @@ class rockyj::production {
     require => User["deploy"],
   }
 
-  file { "my_blogs":
-    path    => "/home/deploy/my_blogs",
+  file { "tweetboard":
+    path    => "/home/deploy/tweetboard",
     ensure  =>  directory,
     owner   => "deploy",
     group   => "www-data",
