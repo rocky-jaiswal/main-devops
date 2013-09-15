@@ -6,7 +6,7 @@ class rockyj::tbox {
   }
 
   class { 'torquebox':
-    version         => '2.3.2',
+    version         => '3.0.0',
     add_to_path     => true,
   }
 

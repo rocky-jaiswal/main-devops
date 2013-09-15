@@ -23,7 +23,11 @@ $ ./setup.sh
 Add User One
 ------------
 useradd rockyj
+
 mkdir /home/rockyj
+
 chown -R /home/rockyj rockyj
+
 passwd rockyj
+
 usermod -aG sudo rockyj

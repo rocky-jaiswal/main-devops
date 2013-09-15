@@ -22,7 +22,7 @@ class rockyj::nginx {
   }
 
   file { "logfile1":
-    path    => "/var/log/nginx/rockyjin.access.log",
+    path    => "/var/log/nginx/tweetboardin.access.log",
     ensure  => present,
     mode    => 0644,
   }
@@ -32,21 +32,21 @@ class rockyj::nginx {
     ensure  => absent,
   }
 
-  file { "rockyjin-avaliable":
-    path    => "/etc/nginx/sites-available/rockyjin",
+  file { "tweetboardin-avaliable":
+    path    => "/etc/nginx/sites-available/tweetboardin",
     ensure  => present,
     mode    => 0644,
-    source  => "puppet:///modules/rockyj/static/rockyjin",
+    source  => "puppet:///modules/rockyj/static/tweetboardin",
     require => File["logfile1", "unwanted-default"],
     notify  => Service["nginx"],
   }
 
-  file { "rockyjin-enabled":
-    path    => "/etc/nginx/sites-enabled/rockyjin",
+  file { "tweetboardin-enabled":
+    path    => "/etc/nginx/sites-enabled/tweetboardin",
     ensure  => link,
     mode    => 0644,
-    target  => "/etc/nginx/sites-available/rockyjin",
-    require => File["rockyjin-avaliable"],
+    target  => "/etc/nginx/sites-available/tweetboardin",
+    require => File["tweetboardin-avaliable"],
   }
 
 }
