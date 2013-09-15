@@ -5,10 +5,10 @@ server {
     access_log  /var/log/nginx/tweetboardin.access.log;
 
     location / {
-        root /home/deploy/tweetboard/current/public;
+        root /opt/torquebox/tweetboard/tweetboard/current/public;
         proxy_set_header X-Forwarded-Host $host;
         proxy_set_header X-Forwarded-Server $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_buffering off;
+        proxy_pass http://localhost:8080;
     }
 }

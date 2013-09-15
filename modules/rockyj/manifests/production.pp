@@ -1,6 +1,7 @@
 class rockyj::production {
 
   include rockyj::nginx
+  include rockyj::node
   include rockyj::psql
   include rockyj::tbox
 
@@ -8,30 +9,13 @@ class rockyj::production {
     path => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
   }
 
-  user { "deploy":
-    comment => "Deploy User",
-    home    => "/home/deploy",
-    ensure  => present,
-    gid     => "www-data",
-    shell   => "/bin/bash",
-    managehome   => true,
-  }
-
-  file { "home":
-    path    => "/home/deploy",
-    ensure  =>  directory,
-    owner   => "deploy",
-    group   => "www-data",
-    require => User["deploy"],
-  }
-
   file { "tweetboard":
-    path    => "/home/deploy/tweetboard",
+    path    => "/opt/torquebox/tweetboard",
     ensure  =>  directory,
-    owner   => "deploy",
-    group   => "www-data",
+    owner   => "torquebox",
+    group   => "torquebox",
     recurse => true,
-    require => File["home"],
+    require => User['torquebox']
   }
 
 }
