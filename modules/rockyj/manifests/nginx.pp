@@ -30,6 +30,14 @@ class rockyj::nginx {
   file { "unwanted-default":
     path    => "/etc/nginx/sites-enabled/default",
     ensure  => absent,
+    require => Package["nginx"]
+  }
+
+  file { "ssldir":
+    path    => "/etc/nginx/ssl",
+    ensure  =>  directory,
+    recurse => true,
+    require => Package["nginx"]
   }
 
   file { "tweetboardin-avaliable":
