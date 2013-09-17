@@ -4,9 +4,18 @@ class rockyj::production {
   include rockyj::node
   include rockyj::psql
   include rockyj::tbox
+  include ufw
 
   Exec {
     path => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+  }
+
+  ufw::allow { "allow-ssh-from-all":
+    port => 22,
+  }
+
+  ufw::allow { "allow-http-from-all":
+    port => 80,
   }
 
   file { "tweetboard":
