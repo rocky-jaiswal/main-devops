@@ -1,8 +1,12 @@
 server {
-    listen   80;
+    listen   443;
     server_name tweetboard.in;
 
     access_log  /var/log/nginx/tweetboardin.access.log;
+
+    ssl on;
+    ssl_certificate /etc/nginx/ssl/server.crt;
+    ssl_certificate_key /etc/nginx/ssl/server.key;
 
     location / {
         root /opt/torquebox/tweetboard/current/public;
