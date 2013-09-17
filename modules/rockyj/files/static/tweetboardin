@@ -5,7 +5,7 @@ server {
     access_log  /var/log/nginx/tweetboardin.access.log;
 
     ssl on;
-    ssl_certificate /etc/nginx/ssl/server.crt;
+    ssl_certificate /etc/nginx/ssl/tweetboard.crt;
     ssl_certificate_key /etc/nginx/ssl/server.key;
 
     location / {
