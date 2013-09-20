@@ -18,6 +18,10 @@ class rockyj::production {
     port => 80,
   }
 
+  ufw::allow { "allow-https-from-all":
+    port => 443,
+  }
+
   file { "tweetboard":
     path    => "/opt/torquebox/tweetboard",
     ensure  =>  directory,

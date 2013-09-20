@@ -1,32 +1,30 @@
 #Setup
 ------
 
-$ wget http://apt.puppetlabs.com/puppetlabs-release-precise.deb
+wget http://apt.puppetlabs.com/puppetlabs-release-precise.deb
 
-$ sudo dpkg -i puppetlabs-release-precise.deb
+sudo dpkg -i puppetlabs-release-precise.deb
 
-$ sudo apt-get update
+sudo apt-get update
 
-$ sudo apt-get install puppet-common
+sudo apt-get install puppet-common wget curl git
 
-$ sudo apt-get install git
+git clone https://github.com/rocky-jaiswal/main-devops.git
 
-$ git clone git@github.com:rocky-jaiswal/main-devops.git
+cd main-devops
 
-$ cd main-devops
+chmod u+x setup.sh
 
-$ chmod u+x setup.sh
-
-$ ./setup.sh
+./setup.sh
 
 
 Add User One
 ------------
-useradd rockyj
+useradd rockyj -s /bin/bash
 
 mkdir /home/rockyj
 
-chown -R /home/rockyj rockyj
+chown -R rockyj /home/rockyj
 
 passwd rockyj
 

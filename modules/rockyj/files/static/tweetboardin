@@ -1,14 +1,19 @@
 server {
-    listen   80;
+    listen   443;
     server_name tweetboard.in;
 
     access_log  /var/log/nginx/tweetboardin.access.log;
 
+    ssl on;
+    ssl_certificate /etc/nginx/ssl/tweetboard.crt;
+    ssl_certificate_key /etc/nginx/ssl/server.key;
+
     location / {
         root /opt/torquebox/tweetboard/current/public;
-        proxy_set_header X-Forwarded-Host $host;
-        proxy_set_header X-Forwarded-Server $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_redirect off;
         proxy_pass http://localhost:8080;
     }
 }
