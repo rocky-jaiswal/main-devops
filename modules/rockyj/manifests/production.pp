@@ -27,4 +27,12 @@ class rockyj::production {
     require => User['torquebox']
   }
 
+  file { "initscript":
+    path    => "/etc/init/torquebox",
+    ensure  => present,
+    mode    => 0644,
+    source  => "puppet:///modules/rockyj/static/init_s",
+    require => User['torquebox']
+  }
+
 }
