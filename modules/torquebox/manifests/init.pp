@@ -58,7 +58,7 @@ class torquebox (
     group   => 'root',
     mode    => '0644',
     require => Exec['install_torquebox'],
-    before  => [ File['/etc/init/torquebox.conf'], Service['torquebox'] ]
+    before  => [ File['/etc/init/torquebox.conf'] ]
   }
 
   if $add_to_path == true {
