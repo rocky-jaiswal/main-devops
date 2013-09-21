@@ -72,18 +72,4 @@ class torquebox (
     }
   }
 
-  file { '/etc/init/torquebox.conf':
-    ensure  => 'present',
-    source  => 'puppet:///modules/torquebox/upstart.conf',
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
-    require => Exec['install_torquebox']
-  }
-
-  service { 'torquebox':
-    ensure  => 'running',
-    enable  => true,
-    require => File['/etc/init/torquebox.conf']
-  }
 }
