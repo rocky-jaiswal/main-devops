@@ -36,6 +36,7 @@ class torquebox (
     ensure  => 'present',
     gid     => 'torquebox',
     home    => '/opt/torquebox',
+    shell   => '/bin/bash',
     require => Group['torquebox']
   }
 

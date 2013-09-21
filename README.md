@@ -29,3 +29,9 @@ chown -R rockyj /home/rockyj
 passwd rockyj
 
 usermod -aG sudo rockyj
+
+
+Make torquebox sudo
+-------------------
+
+sudo usermod -a -G sudo torquebox
