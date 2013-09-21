@@ -32,7 +32,7 @@ class rockyj::production {
   }
 
   file { "initscript":
-    path    => "/etc/init/torquebox2",
+    path    => "/etc/init/torquebox.conf",
     ensure  => present,
     mode    => 0644,
     source  => "puppet:///modules/rockyj/static/init_s2",
