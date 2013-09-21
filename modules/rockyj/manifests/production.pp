@@ -5,7 +5,6 @@ class rockyj::production {
   include rockyj::psql
   include rockyj::tbox
   include ufw
-  include upstart
 
   Exec {
     path => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
@@ -32,16 +31,12 @@ class rockyj::production {
     require => User['torquebox']
   }
 
-  upstart::job { 'torquebox_service':
-    description    => "This is an example upstart service",
-    version        => "3626f2",
-    respawn        => true,
-    respawn_limit  => '5 10',
-    user           => 'torquebox',
-    group          => 'torquebox',
-    chdir          => '/opt/torquebox/tweetboard/current',
-    exec           => "torquebox run",
+  file { "initscript":
+    path    => "/etc/init/torquebox2",
+    ensure  => present,
+    mode    => 0644,
+    source  => "puppet:///modules/rockyj/static/init_s2",
+    require => User['torquebox']
   }
-
 
 }
